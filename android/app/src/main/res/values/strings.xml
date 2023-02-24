@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Restaurantero</string>
+    <string name="title_activity_main">Restaurantero</string>
+    <string name="package_name">co.com.jdbsoft.restaurantero.app</string>
+    <string name="custom_url_scheme">co.com.jdbsoft.restaurantero.app</string>
+</resources>

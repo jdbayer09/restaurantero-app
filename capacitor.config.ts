@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'co.com.jdbsoft.restaurantero.app',
   appName: 'Restaurantero',
   webDir: 'www',
   bundledWebRuntime: false
