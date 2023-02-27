@@ -1,16 +1,31 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NgModule, inject } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes, UrlSegment, Route, CanMatchFn } from '@angular/router';
+import { AuthService } from './services/security/auth.service';
+
+const AuthenticationGuard: CanMatchFn = 
+  (route: Route, segments: UrlSegment[]) => 
+  inject(AuthService).isAuthenticated(route, segments);
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'z',
     pathMatch: 'full'
   },
+  {
+    path: 'z',
+    loadChildren: () => import('./pages/zone/zone.module').then( m => m.ZonePageModule),
+    canMatch: [AuthenticationGuard]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'z'
+  }
 ];
 
 @NgModule({
