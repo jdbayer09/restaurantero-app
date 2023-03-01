@@ -38,6 +38,11 @@ export class AuthService {
     return userData ? userData.token : '';
   }
 
+  async getUsuarioData(): Promise<UsuarioDataModel> {
+    let userData: UsuarioDataModel = await this.storage.get(USER_DATA_KEY);
+    userData.token = '';
+    return userData;
+  }
 
   async login(data: LoginModel): Promise<UsuarioDataModel | any | null> {
     return new Promise((resolve, reject) => {
@@ -69,19 +74,19 @@ export class AuthService {
             loading.dismiss();
             this.logoutAction();
             resolve(false);
-          }, 500);          
+          }, 200);          
         } else {
           setTimeout(() => {
             loading.dismiss();
             resolve(true);
-          }, 500);
+          }, 200);
         }
       } else {
         setTimeout(() => {
           loading.dismiss();
           this.logoutAction();
           resolve(false);
-        }, 500);
+        }, 200);
       }  
     });
   }

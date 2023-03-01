@@ -1,5 +1,10 @@
 {
     "recommendations": [
-      "ionic.ionic"
+      "ionic.ionic",
+      "Mikael.Angular-BeastCode",
+      "jakethashi.vscode-angular2-emmet",
+      "Angular.ng-template",
+      "johnpapa.Angular2",
+      "natewallace.angular2-inline"
     ]
 }

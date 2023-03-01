@@ -74,6 +74,12 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  ion-tab-bar {
+    --border: #ffffff;
+    --background: #ffffff;
+    --color: #000000;
+  }  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -197,7 +203,7 @@
    */
 
   .md body {
-    --ion-background-color: #121212;
+    --ion-background-color: #000000;
     --ion-background-color-rgb: 18,18,18;
 
     --ion-text-color: #ffffff;
@@ -237,6 +243,12 @@
   ion-item {
     --border-color: #898989;
   }
+
+  ion-tab-bar {
+    --border: #000000 !important;
+    --background: #000000 !important;
+    --color: #ffffff !important;
+  }  
 }
 
 ion-item {
@@ -246,8 +258,13 @@ ion-item {
   --highlight-color-invalid: #c01313;
   --border-color: #898989;
 }
+
 ion-item.item-has-focus > ion-label{
   color: #e05f09 !important;
+}
+
+ion-tab-button {
+  --color-selected :  #e05f09;
 }
 
 .ion-color-base {
@@ -257,4 +274,8 @@ ion-item.item-has-focus > ion-label{
   --ion-color-contrast-rgb: 255,255,255;
   --ion-color-shade: #c55408;
   --ion-color-tint: #e36f22;
+}
+
+body{
+  font-family: 'Calibri';
 }

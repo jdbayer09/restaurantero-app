@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/security/auth.service';
+import { UsuarioDataModel } from '../../models/security/usuario.model';
 
 @Component({
   selector: 'app-zone',
@@ -8,10 +9,10 @@ import { AuthService } from 'src/app/services/security/auth.service';
 })
 export class ZonePage implements OnInit {
 
-  token = '';
+  token: UsuarioDataModel | any;
 
   constructor(private authSV: AuthService) { 
-    authSV.getToken().then(d => this.token = d);
+    authSV.getUsuarioData().then(d => this.token = d);
   }
 
   ngOnInit() {

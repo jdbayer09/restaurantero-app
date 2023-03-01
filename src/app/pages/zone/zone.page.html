@@ -1,9 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>zone</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  {{token}}
-</ion-content>
+<ion-router-outlet></ion-router-outlet>
+<ion-tabs>
+  <ion-tab-bar slot="bottom" mode="ios" selected-tab="inicio" [translucent]="true" >
+    <ion-tab-button tab="inicio" mode="md">
+      <ion-icon name="home"></ion-icon>
+      Inicio
+    </ion-tab-button>
+    <ion-tab-button tab="comandas" mode="md">
+      <ion-icon name="restaurant"></ion-icon>
+      Comandas
+    </ion-tab-button>
+    <ion-tab-button tab="reservas" mode="md">
+      <ion-icon name="calendar"></ion-icon>
+      Reservas
+    </ion-tab-button>
+    <ion-tab-button tab="ajustes" mode="md">
+      <ion-icon name="settings"></ion-icon>
+      Ajustes
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

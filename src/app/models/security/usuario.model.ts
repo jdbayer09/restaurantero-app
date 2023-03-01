@@ -3,6 +3,5 @@ export interface UsuarioDataModel {
     usuario: string;
     nombre: string;
     cargo: string;
-    permisos: number[];
     token: string;
 }

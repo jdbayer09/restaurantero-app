@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+
+  namespace 'co.com.jdbsoft.restaurantero.app'
+  compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "co.com.jdbsoft.restaurantero.app"
         minSdkVersion rootProject.ext.minSdkVersion
