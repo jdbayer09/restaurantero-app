@@ -253,27 +253,27 @@
 
 ion-item {
   --highlight-height: 2px;
-  --highlight-color-focused: #e05f09;
+  --highlight-color-focused: #fd9827;
   --highlight-color-valid: #318526;
-  --highlight-color-invalid: #c01313;
+  --highlight-color-invalid: #fd9827;
   --border-color: #898989;
 }
 
 ion-item.item-has-focus > ion-label{
-  color: #e05f09 !important;
+  color: #fd9827 !important;
 }
 
 ion-tab-button {
-  --color-selected :  #e05f09;
+  --color-selected :  #fd9827;
 }
 
 .ion-color-base {
-  --ion-color-base: #e05f09;
-  --ion-color-base-rgb: 224,95,9;
+  --ion-color-base: #fd9827;
+  --ion-color-base-rgb: 253,152,39;
   --ion-color-contrast: #ffffff;
-  --ion-color-contrast-rgb: 255,255,255;
-  --ion-color-shade: #c55408;
-  --ion-color-tint: #e36f22;
+  --ion-color-contrast-rgb: 0,0,0;
+  --ion-color-shade: #df8622;
+  --ion-color-tint: #fda23d;
 }
 
 body{

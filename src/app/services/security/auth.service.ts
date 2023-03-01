@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Route, UrlSegment } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { StorageService } from '../util/storage.service';
@@ -24,12 +23,7 @@ export class AuthService {
   ) { 
 
   }
-
-  async isAuthenticated(route: Route, segments: UrlSegment[]) {
-    if (!environment.production) {
-      console.info('Route -> ', route);
-      console.info('Segments -> ', segments);
-    }
+  async isAuthenticated() {
     return await this.isAuthAction();
   }
 

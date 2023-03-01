@@ -3,8 +3,8 @@ import { PreloadAllModules, RouterModule, Routes, UrlSegment, Route, CanMatchFn 
 import { AuthService } from './services/security/auth.service';
 
 const AuthenticationGuard: CanMatchFn = 
-  (route: Route, segments: UrlSegment[]) => 
-  inject(AuthService).isAuthenticated(route, segments);
+  () => 
+  inject(AuthService).isAuthenticated();
 
 const routes: Routes = [
   {
