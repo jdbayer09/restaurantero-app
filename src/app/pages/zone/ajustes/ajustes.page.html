@@ -1,12 +1,18 @@
 <app-header titulo="Ajustes"></app-header>
 <ion-content [fullscreen]="true" class="ion-padding">
 
-    <ion-list [inset]="true" [class]="modoOscuroClass? 'list-dark' : 'list-light'">
-        <ion-item [class]="modoOscuroClass? 'item-dark' : 'item-light'">
+    <ion-list [inset]="true" [class]="modoOscuroClass? 'list-dark' : 'list-light'" lines="none">
+        <ion-item [class]="modoOscuroClass? 'item-dark' : 'item-light'" button>
             <ion-icon slot="start" name="moon" *ngIf="modoOscuro"></ion-icon>
             <ion-icon slot="start" name="sunny" *ngIf="!modoOscuro"></ion-icon>
             <ion-label>Modo Oscuro</ion-label>
-            <ion-toggle id="themeToggle" color="base" slot="end" [(ngModel)]="modoOscuro" (click)="cambiarModoOscuro()"></ion-toggle>
+            <ion-toggle color="base" slot="end" [(ngModel)]="modoOscuro" (click)="cambiarModoOscuro()"></ion-toggle>
+        </ion-item>
+
+
+        <ion-item [class]="modoOscuroClass? 'item-dark' : 'item-light'" (click)="cerrarSesionAction()" button>
+            <ion-icon color="danger" slot="start" name="log-out-outline"></ion-icon>
+            <ion-label color="danger">Cerrar Sesión</ion-label>
         </ion-item>
     </ion-list>
 

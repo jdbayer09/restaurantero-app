@@ -76,7 +76,7 @@ export class AuthService {
     });
   }
 
-  private async logoutAction() {
+  async logoutAction() {
     await this.storage.delete(USER_DATA_KEY);
     this.toolsSV.navCtrl.navigateRoot('/login', {animated: true, replaceUrl: true});
   }
