@@ -14,7 +14,6 @@ const DARK_MODE_KEY = storageKeys.MODO_OSCURO;
 export class AjustesPage implements OnInit {
 
   modoOscuro: boolean = false;
-  modoOscuroClass: boolean = false;
 
   constructor(
     private str: StorageService, 
@@ -25,7 +24,6 @@ export class AjustesPage implements OnInit {
   ngOnInit() {
     this.str.get(DARK_MODE_KEY).then((resp: boolean) => {
       this.modoOscuro = resp;
-      this.modoOscuroClass = resp;
     });
   }
 
