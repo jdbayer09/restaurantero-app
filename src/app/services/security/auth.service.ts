@@ -61,27 +61,17 @@ export class AuthService {
 
   private isAuthAction(): Promise<boolean> {
     return new Promise(async (resolve) => {
-      const loading = await this.toolsSV.getLoading();
       const token = await this.getToken();
       if (token && token !== '') {
         if (JWT_HELPER.isTokenExpired(token)) {
-          setTimeout(() => {
-            loading.dismiss();
-            this.logoutAction();
-            resolve(false);
-          }, 200);          
-        } else {
-          setTimeout(() => {
-            loading.dismiss();
-            resolve(true);
-          }, 200);
-        }
-      } else {
-        setTimeout(() => {
-          loading.dismiss();
           this.logoutAction();
           resolve(false);
-        }, 200);
+        } else {
+          resolve(true);
+        }
+      } else {
+        this.logoutAction();
+        resolve(false);
       }  
     });
   }
