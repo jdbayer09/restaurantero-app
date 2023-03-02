@@ -17,6 +17,8 @@ const API_URL = environment.apiUrl;
 })
 export class AuthService {
 
+  private token = '';
+
   constructor(
     public toolsSV: ToolsService,
     private storage: StorageService,
@@ -29,14 +31,15 @@ export class AuthService {
   }
 
   async getToken(): Promise<string> {
-    let userData: UsuarioDataModel = await this.storage.get(USER_DATA_KEY);
-    return userData ? userData.token : '';
+    if (this.token === '') {
+      let userData: UsuarioDataModel = await this.storage.get(USER_DATA_KEY);
+      this.token = userData ? userData.token : ''; 
+    }
+    return this.token;
   }
 
   async getUsuarioData(): Promise<UsuarioDataModel> {
-    let userData: UsuarioDataModel = await this.storage.get(USER_DATA_KEY);
-    userData.token = '';
-    return userData;
+    return await this.storage.get(USER_DATA_KEY);
   }
 
   async login(data: LoginModel): Promise<UsuarioDataModel | any | null> {
@@ -78,6 +81,7 @@ export class AuthService {
 
   async logoutAction() {
     await this.storage.delete(USER_DATA_KEY);
+    this.token = '';
     this.toolsSV.navCtrl.navigateRoot('/login', {animated: true, replaceUrl: true});
   }
 }
