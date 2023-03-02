@@ -6,9 +6,10 @@ import { ToolsService } from '../util/tools.service';
 import { UsuarioDataModel } from '../../models/security/usuario.model';
 import { LoginModel } from '../../models/security/login.model';
 import { HttpClient } from '@angular/common/http';
+import { storageKeys } from 'src/environments/storage-keys';
 
 const JWT_HELPER = new JwtHelperService();
-const USER_DATA_KEY = environment.storageKeys.USER_DATA;
+const USER_DATA_KEY = storageKeys.USER_DATA;
 const API_URL = environment.apiUrl;
 
 @Injectable({

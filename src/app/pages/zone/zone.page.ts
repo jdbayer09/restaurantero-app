@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/security/auth.service';
-import { UsuarioDataModel } from '../../models/security/usuario.model';
+import { StorageService } from '../../services/util/storage.service';
+import { storageKeys } from '../../../environments/storage-keys';
+
+const DARK_MODE_KEY = storageKeys.MODO_OSCURO;
 
 @Component({
   selector: 'app-zone',
@@ -9,13 +11,15 @@ import { UsuarioDataModel } from '../../models/security/usuario.model';
 })
 export class ZonePage implements OnInit {
 
-  token: UsuarioDataModel | any;
+  modoOscuro: boolean = false;
 
-  constructor(private authSV: AuthService) { 
-    authSV.getUsuarioData().then(d => this.token = d);
+  constructor(private str: StorageService) { 
   }
 
   ngOnInit() {
+    this.str.get(DARK_MODE_KEY).then((resp: boolean) => {
+      this.modoOscuro = resp;
+    });
   }
 
 }
