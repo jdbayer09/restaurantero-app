@@ -1,0 +1,21 @@
+.item-light{
+    --background: #ffffff !important;
+    --color: #000000 !important;
+}
+
+.list-light {
+    background: #ffffff !important;
+}
+
+.item-dark {
+    --background: #000000 !important;
+    --color: #fff !important;
+}
+
+.list-dark {
+    background: #000000 !important;
+}
+
+ion-item {
+    margin-bottom: 1rem;
+}

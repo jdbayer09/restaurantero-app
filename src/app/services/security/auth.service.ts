@@ -6,15 +6,18 @@ import { ToolsService } from '../util/tools.service';
 import { UsuarioDataModel } from '../../models/security/usuario.model';
 import { LoginModel } from '../../models/security/login.model';
 import { HttpClient } from '@angular/common/http';
+import { storageKeys } from 'src/environments/storage-keys';
 
 const JWT_HELPER = new JwtHelperService();
-const USER_DATA_KEY = environment.storageKeys.USER_DATA;
+const USER_DATA_KEY = storageKeys.USER_DATA;
 const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private token = '';
 
   constructor(
     public toolsSV: ToolsService,
@@ -28,14 +31,15 @@ export class AuthService {
   }
 
   async getToken(): Promise<string> {
-    let userData: UsuarioDataModel = await this.storage.get(USER_DATA_KEY);
-    return userData ? userData.token : '';
+    if (this.token === '') {
+      let userData: UsuarioDataModel = await this.storage.get(USER_DATA_KEY);
+      this.token = userData ? userData.token : ''; 
+    }
+    return this.token;
   }
 
   async getUsuarioData(): Promise<UsuarioDataModel> {
-    let userData: UsuarioDataModel = await this.storage.get(USER_DATA_KEY);
-    userData.token = '';
-    return userData;
+    return await this.storage.get(USER_DATA_KEY);
   }
 
   async login(data: LoginModel): Promise<UsuarioDataModel | any | null> {
@@ -60,33 +64,24 @@ export class AuthService {
 
   private isAuthAction(): Promise<boolean> {
     return new Promise(async (resolve) => {
-      const loading = await this.toolsSV.getLoading();
       const token = await this.getToken();
       if (token && token !== '') {
         if (JWT_HELPER.isTokenExpired(token)) {
-          setTimeout(() => {
-            loading.dismiss();
-            this.logoutAction();
-            resolve(false);
-          }, 200);          
-        } else {
-          setTimeout(() => {
-            loading.dismiss();
-            resolve(true);
-          }, 200);
-        }
-      } else {
-        setTimeout(() => {
-          loading.dismiss();
           this.logoutAction();
           resolve(false);
-        }, 200);
+        } else {
+          resolve(true);
+        }
+      } else {
+        this.logoutAction();
+        resolve(false);
       }  
     });
   }
 
-  private async logoutAction() {
+  async logoutAction() {
     await this.storage.delete(USER_DATA_KEY);
+    this.token = '';
     this.toolsSV.navCtrl.navigateRoot('/login', {animated: true, replaceUrl: true});
   }
 }
