@@ -1,5 +1,5 @@
 export interface LoginModel { 
     contrasena: string;
-    usuario: string;
+    login: string;
     plataforma: 'APP';
 }

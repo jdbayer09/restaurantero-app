@@ -11,7 +11,7 @@ import { NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup = this.formBuilder.group({
-    usuario: [ '' , [Validators.required, Validators.minLength(3)] ],
+    login: [ '' , [Validators.required, Validators.minLength(3)] ],
     contrasena: [ '', [ Validators.required, Validators.minLength(5) ] ]
   });;
 
