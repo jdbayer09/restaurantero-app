@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ComandasPageRoutingModule } from './comandas-routing.module';
+import { MesasPageRoutingModule } from './mesas-routing.module';
 
-import { ComandasPage } from './comandas.page';
+import { MesasPage } from './mesas.page';
 import { HeaderModule } from '../../../components/header/header.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { HeaderModule } from '../../../components/header/header.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ComandasPageRoutingModule,
+    MesasPageRoutingModule,
     HeaderModule
   ],
-  declarations: [ComandasPage]
+  declarations: [MesasPage]
 })
-export class ComandasPageModule {}
+export class MesasPageModule {}

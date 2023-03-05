@@ -22,8 +22,8 @@ const routes: Routes = [
         loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
       },
       {
-        path: 'comandas',
-        loadChildren: () => import('./comandas/comandas.module').then( m => m.ComandasPageModule)
+        path: 'mesas',
+        loadChildren: () => import('./mesas/mesas.module').then( m => m.MesasPageModule)
       },
       {
         path: 'reservas',
@@ -36,6 +36,8 @@ const routes: Routes = [
       }
     ]
   },
+
+
 ];
 
 @NgModule({
